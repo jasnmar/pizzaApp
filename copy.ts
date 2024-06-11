@@ -1,11 +1,19 @@
+
 /**
- * Challenge: Create a Pizza object type. It should include a `name`
- * and a `price` property.
+ * Challenge: Add an Order type. It should have `id`, `pizza`, and `status` properties.
+ * Look through the code if you need a reminder as to what data types those should be.
  */
+
 
 type Pizza = {
   name: string,
   price: number
+}
+
+type Order = {
+  pizza: Pizza,
+  id: number,
+  status: string
 }
 
 const menu = [
@@ -31,12 +39,15 @@ function placeOrder(pizzaName: string) {
     return
   }
   cashInRegister += pizzaObject.price
-  pizzaObject.status = "ordered"
-  pizzaObject.id = nextOrderId
+  const pizzaOrder: Order = {
+    pizza: pizzaObject,
+    id: nextOrderId,
+    status: "ordered"
+  }
   nextOrderId++
-  orderQueue.push(pizzaObject)
-  console.log('pizzaObject: ', pizzaObject)
-  return pizzaObject
+  orderQueue.push(pizzaOrder)
+  console.log('pizzaOrder: ', pizzaOrder)
+  return pizzaOrder
 }
 
 
