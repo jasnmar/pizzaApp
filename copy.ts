@@ -19,12 +19,12 @@ let nextOrderId: number = 1
 let cashInRegister: number = 100
 const orderQueue = []
 
-function addNewPizza(pizza) {
+function addNewPizza(pizza: Pizza) {
   menu.push(pizza)
 } 
 
 
-function placeOrder(pizzaName) {
+function placeOrder(pizzaName: string) {
   const pizzaObject = menu.find((item) => item.name === pizzaName)
   if (!pizzaObject) {
     console.error(`${pizzaName} does not exist in the menu`)
@@ -39,11 +39,6 @@ function placeOrder(pizzaName) {
   return pizzaObject
 }
 
-/**
- * Challenge: Teach TS what data type should be used for the 
- * orderId in the completeOrder function. Then check for any
- * additional warnings TS comes up with and fix those.
- */
 
 function completeOrder(orderId: number) {
   const completedOrder = orderQueue.find((order) => order.id === orderId)
@@ -57,9 +52,9 @@ function completeOrder(orderId: number) {
 }
 
 
-addNewPizza({ name: "Chicken Bacon Ranch", cost: 12 })
-addNewPizza({ name: "BBQ Chicken", cost: 12 })
-addNewPizza({ name: "Spicy Sausage", cost: 11 })
+addNewPizza({ name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ name: "BBQ Chicken", price: 12 })
+addNewPizza({ name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
 completeOrder(1)
