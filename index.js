@@ -1,49 +1,53 @@
-const menu2 = [
-  {name: "Margherita", price: 8},
-  {name: "Pepperoni", price: 10},
-  {name: "Hawaiian", price: 10},
-  {name: "Veggie", price: 9},
-]
-
-let nextOrderId2 = 1
-let cashInRegister2 = 100
-const orderQueue2 = []
-
-function addNewPizza2(pizza) {
-  menu.push(pizza)
-} 
-
-
-function placeOrder2(pizzaName) {
-  const pizzaObject = menu.find((item) => item.name === pizzaName)
-  console.log('pizzaObject: ', pizzaObject)
-  console.log('cashInRegister: ', cashInRegister)
-  cashInRegister += eval(pizzaObject.price)
-  console.log('cashInRegister: ', cashInRegister)
-  console.log('pizzaObject.price: ', pizzaObject.price)
-  pizzaObject.status = "ordered"
-  pizzaObject.id = nextOrderId
-  nextOrderId++
-  orderQueue.push(pizzaObject)
-  console.log('pizzaObject: ', pizzaObject)
-  return pizzaObject
+"use strict";
+/**
+ * Challenge: Add an Order type. It should have `id`, `pizza`, and `status` properties.
+ * Look through the code if you need a reminder as to what data types those should be.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+const menu = [
+    { id: 1, name: "Margherita", price: 8 },
+    { id: 2, name: "Pepperoni", price: 10 },
+    { id: 3, name: "Hawaiian", price: 10 },
+    { id: 4, name: "Veggie", price: 9 },
+];
+let nextOrderId = 1;
+let cashInRegister = 100;
+const orderQueue = [];
+function addNewPizza(pizza) {
+    menu.push(pizza);
 }
-
-function completeOrder2(orderId) {
-  const completedOrder = orderQueue.find((order) => order.id === orderId)
-  completedOrder.status = "completed"
-  console.log('completedOrder: ', completedOrder)
-  return completeOrder
+function placeOrder(pizzaName) {
+    const pizzaObject = menu.find((item) => item.name === pizzaName);
+    if (!pizzaObject) {
+        console.error(`${pizzaName} does not exist in the menu`);
+        return false;
+    }
+    cashInRegister += pizzaObject.price;
+    const pizzaOrder = {
+        pizza: pizzaObject,
+        id: nextOrderId,
+        status: "ordered"
+    };
+    nextOrderId++;
+    orderQueue.push(pizzaOrder);
+    console.log('pizzaOrder: ', pizzaOrder);
+    return pizzaOrder;
 }
-
-
-addNewPizza({ name: "Chicken Bacon Ranch", price: 12 })
-addNewPizza({ name: "BBQ Chicken", price: 12 })
-addNewPizza({ name: "Spicy Sausage", price: 11 })
-
-placeOrder("Chicken Bacon Ranch")
-completeOrder(1)
-
-console.log("Menu:", menu)
-console.log("Cash in register:", cashInRegister)
-console.log("Order queue:", orderQueue)
+function completeOrder(orderId) {
+    const completedOrder = orderQueue.find((order) => order.id === orderId);
+    if (!completedOrder) {
+        console.error(`${completeOrder} was not found in the queue`);
+        return false;
+    }
+    completedOrder.status = "completed";
+    console.log('completedOrder: ', completedOrder);
+    return completeOrder;
+}
+addNewPizza({ id: 4, name: "Chicken Bacon Ranch", price: 12 });
+addNewPizza({ id: 5, name: "BBQ Chicken", price: 12 });
+addNewPizza({ id: 6, name: "Spicy Sausage", price: 11 });
+placeOrder("Chicken Bacon Ranch");
+completeOrder(1);
+console.log("Menu:", menu);
+console.log("Cash in register:", cashInRegister);
+console.log("Order queue:", orderQueue);
