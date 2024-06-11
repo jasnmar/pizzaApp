@@ -1,20 +1,20 @@
-const menu = [
+const menu2 = [
   {name: "Margherita", price: 8},
   {name: "Pepperoni", price: 10},
   {name: "Hawaiian", price: 10},
   {name: "Veggie", price: 9},
 ]
 
-let nextOrderId = 1
-let cashInRegister = 100
-const orderQueue = []
+let nextOrderId2 = 1
+let cashInRegister2 = 100
+const orderQueue2 = []
 
-function addNewPizza(pizza) {
+function addNewPizza2(pizza) {
   menu.push(pizza)
 } 
 
 
-function placeOrder(pizzaName) {
+function placeOrder2(pizzaName) {
   const pizzaObject = menu.find((item) => item.name === pizzaName)
   console.log('pizzaObject: ', pizzaObject)
   console.log('cashInRegister: ', cashInRegister)
@@ -29,7 +29,7 @@ function placeOrder(pizzaName) {
   return pizzaObject
 }
 
-function completeOrder(orderId) {
+function completeOrder2(orderId) {
   const completedOrder = orderQueue.find((order) => order.id === orderId)
   completedOrder.status = "completed"
   console.log('completedOrder: ', completedOrder)

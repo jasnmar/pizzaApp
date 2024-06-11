@@ -5,8 +5,8 @@ const menu = [
   {name: "Veggie", price: 9},
 ]
 
-let nextOrderId = 1
-let cashInRegister = 100
+let nextOrderId: number = 1
+let cashInRegister: number = 100
 const orderQueue = []
 
 function addNewPizza(pizza) {
@@ -29,8 +29,18 @@ function placeOrder(pizzaName) {
   return pizzaObject
 }
 
-function completeOrder(orderId) {
+/**
+ * Challenge: Teach TS what data type should be used for the 
+ * orderId in the completeOrder function. Then check for any
+ * additional warnings TS comes up with and fix those.
+ */
+
+function completeOrder(orderId: number) {
   const completedOrder = orderQueue.find((order) => order.id === orderId)
+  if(!completedOrder) {
+    console.error(`${completeOrder} was not found in the queue`)
+    return
+  }
   completedOrder.status = "completed"
   console.log('completedOrder: ', completedOrder)
   return completeOrder
