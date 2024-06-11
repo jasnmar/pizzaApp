@@ -1,3 +1,13 @@
+/**
+ * Challenge: Create a Pizza object type. It should include a `name`
+ * and a `price` property.
+ */
+
+type Pizza = {
+  name: string,
+  price: number
+}
+
 const menu = [
   {name: "Margherita", price: 8},
   {name: "Pepperoni", price: 10},
