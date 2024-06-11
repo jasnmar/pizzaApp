@@ -36,7 +36,7 @@ function placeOrder(pizzaName: string) {
   const pizzaObject = menu.find((item) => item.name === pizzaName)
   if (!pizzaObject) {
     console.error(`${pizzaName} does not exist in the menu`)
-    return
+    return false
   }
   cashInRegister += pizzaObject.price
   const pizzaOrder: Order = {
@@ -55,7 +55,7 @@ function completeOrder(orderId: number) {
   const completedOrder = orderQueue.find((order) => order.id === orderId)
   if(!completedOrder) {
     console.error(`${completeOrder} was not found in the queue`)
-    return
+    return false
   }
   completedOrder.status = "completed"
   console.log('completedOrder: ', completedOrder)
