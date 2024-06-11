@@ -25,7 +25,7 @@ const menu = [
 
 let nextOrderId: number = 1
 let cashInRegister: number = 100
-const orderQueue = []
+const orderQueue: Order[] = []
 
 function addNewPizza(pizza: Pizza) {
   menu.push(pizza)
