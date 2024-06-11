@@ -67,7 +67,20 @@ function completeOrder(orderId: number) {
   console.log('completedOrder: ', completedOrder)
   return completeOrder
 }
+/**
+ * Challenge: create a new utility function called getPizzaDetail. It will take
+ * a parameter called `identifier`, but there's a twist: we want this identifier
+ * to be allowed to either be the string name of the pizza (e.g. "Pepperoni"),
+ * OR to be the number ID of the pizza (e.g. 2).
+ * 
+ * Don't worry about the code inside the function yet, just create the function
+ * signature, making sure to teach TS that the `identifier` parameter is allowed
+ * to either be a string or a number.
+ */
 
+function getPizzaDetail(identifier: string | number) {
+
+}
 
 addNewPizza({ id:4, name: "Chicken Bacon Ranch", price: 12 })
 addNewPizza({ id:5, name: "BBQ Chicken", price: 12 })
