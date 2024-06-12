@@ -34,14 +34,11 @@ function completeOrder(orderId) {
         return false;
     }
     completedOrder.status = "completed";
-    console.log('completedOrder: ', completedOrder);
+    console.log("completedOrder: ", completedOrder);
     return completeOrder;
 }
 function getPizzaDetail(identifier) {
-    /**
-     * Challenge: write the code to check if the parameter is a string
-     * or a number, and use the menu.find() method accordingly
-     */
+    console.log("typeof identifier:", typeof identifier);
     if (typeof identifier === "string") {
         const pizza = menu.find((item) => item.name === identifier);
         if (!pizza) {
@@ -50,7 +47,7 @@ function getPizzaDetail(identifier) {
         }
         return pizza;
     }
-    else {
+    else if (typeof identifier === "number") {
         const pizza = menu.find((item) => item.id === identifier);
         if (!pizza) {
             console.error(`${identifier} id was not found on the menu`);
@@ -58,12 +55,17 @@ function getPizzaDetail(identifier) {
         }
         return pizza;
     }
+    else {
+        throw new TypeError("Parameter 'identifier' must be either a string or number");
+    }
 }
 addNewPizza({ id: 4, name: "Chicken Bacon Ranch", price: 12 });
 addNewPizza({ id: 5, name: "BBQ Chicken", price: 12 });
 addNewPizza({ id: 6, name: "Spicy Sausage", price: 11 });
 placeOrder("Chicken Bacon Ranch");
 completeOrder(1);
+console.log(getPizzaDetail("Pepperoni"));
+console.log(getPizzaDetail(3));
 console.log("Menu:", menu);
 console.log("Cash in register:", cashInRegister);
 console.log("Order queue:", orderQueue);
