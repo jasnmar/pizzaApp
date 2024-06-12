@@ -5,11 +5,6 @@ type Pizza = {
   price: number
 }
 
-type PizzaPrimative = {
-  name: string,
-  price: number
-}
-
 type Order = {
   pizza: Pizza,
   id: number,
@@ -28,7 +23,7 @@ const menu: Pizza[] = [
   {id:nextPizzaId++, name: "Veggie", price: 9},
 ]
 
-function addNewPizza(pizza: PizzaPrimative): void {
+function addNewPizza(pizza: Omit<Pizza, "id">): void {
   const pizzaWithId: Pizza = { id:nextPizzaId++, ...pizza }
   menu.push(pizzaWithId)
 } 
