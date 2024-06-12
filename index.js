@@ -11,7 +11,17 @@ const menu = [
 function addNewPizza(pizza) {
     const pizzaWithId = Object.assign({ id: nextPizzaId++ }, pizza);
     menu.push(pizzaWithId);
+    return pizzaWithId;
 }
+function addToArray(array, item) {
+    array.push(item);
+    return array;
+}
+// example usage:
+addToArray(menu, { id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 });
+addToArray(orderQueue, { id: nextOrderId++, pizza: menu[2], status: "completed" });
+console.log(menu);
+console.log(orderQueue);
 function placeOrder(pizzaName) {
     const pizzaObject = menu.find((item) => item.name === pizzaName);
     if (!pizzaObject) {

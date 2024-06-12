@@ -29,6 +29,20 @@ function addNewPizza(pizza: Omit<Pizza, "id">): Pizza {
   return pizzaWithId
 } 
 
+function addToArray<T>(array: T[], item: T): T[] {
+  array.push(item)
+  return array
+}
+
+// example usage:
+addToArray<Pizza>(menu, {id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 })
+addToArray<Order>(orderQueue, { id: nextOrderId++, pizza: menu[2], status: "completed" })
+
+console.log(menu)
+console.log(orderQueue)
+
+
+
 function placeOrder(pizzaName: string): Order {
   const pizzaObject = menu.find((item) => item.name === pizzaName)
   if (!pizzaObject) {
