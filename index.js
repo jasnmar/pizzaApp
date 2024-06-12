@@ -14,7 +14,7 @@ function placeOrder(pizzaName) {
     const pizzaObject = menu.find((item) => item.name === pizzaName);
     if (!pizzaObject) {
         console.error(`${pizzaName} does not exist in the menu`);
-        return false;
+        return;
     }
     cashInRegister += pizzaObject.price;
     const pizzaOrder = {
@@ -30,12 +30,11 @@ function placeOrder(pizzaName) {
 function completeOrder(orderId) {
     const completedOrder = orderQueue.find((order) => order.id === orderId);
     if (!completedOrder) {
-        console.error(`${completeOrder} was not found in the queue`);
-        return false;
+        console.error(`${orderId} was not found in the queue`);
+        return;
     }
     completedOrder.status = "completed";
-    console.log("completedOrder: ", completedOrder);
-    return completeOrder;
+    return completedOrder;
 }
 function getPizzaDetail(identifier) {
     console.log("typeof identifier:", typeof identifier);

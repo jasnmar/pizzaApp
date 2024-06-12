@@ -22,16 +22,16 @@ let nextOrderId: number = 1
 let cashInRegister: number = 100
 const orderQueue: Order[] = []
 
-function addNewPizza(pizza: Pizza) {
+function addNewPizza(pizza: Pizza): void {
   menu.push(pizza)
 } 
 
 
-function placeOrder(pizzaName: string) {
+function placeOrder(pizzaName: string): Order {
   const pizzaObject = menu.find((item) => item.name === pizzaName)
   if (!pizzaObject) {
     console.error(`${pizzaName} does not exist in the menu`)
-    return false
+    return
   }
   cashInRegister += pizzaObject.price
   const pizzaOrder: Order = {
@@ -46,15 +46,14 @@ function placeOrder(pizzaName: string) {
 }
 
 
-function completeOrder(orderId: number) {
-  const completedOrder = orderQueue.find((order) => order.id === orderId);
+function completeOrder(orderId: number): Order {
+  const completedOrder = orderQueue.find((order) => order.id === orderId)
   if (!completedOrder) {
-    console.error(`${completeOrder} was not found in the queue`);
-    return false;
+    console.error(`${orderId} was not found in the queue`)
+    return;
   }
-  completedOrder.status = "completed";
-  console.log("completedOrder: ", completedOrder);
-  return completeOrder;
+  completedOrder.status = "completed"
+  return completedOrder
 }
 
 function getPizzaDetail(identifier: string | number): Pizza {
